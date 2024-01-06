@@ -28,12 +28,46 @@ body {
 }
 
 .brand {
-  height: 104px;
+  height: 90px;
   background-color: #ffffff;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.brand p {
+  display: inline;
+  vertical-align: middle;
+  font-size: 24px;
+}
+.brand img {
+  height: 26px;
+  width: 26px;
+  margin-top: 3px;
 }
 .nav-items {
   flex: 1;
   background-color: var(--main-green);
+  display: flex;
+  justify-content: center;
+}
+.nav-item-categories {
+  margin-top: 25px;
+  height: 600px;
+  width: 85%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.nav-tabs {
+  background-color: bisque;
+  flex: 1;
+}
+.projects {
+  border: 2px solid pink;
+  background-color: pink;
+  flex: 1;
 }
 /* Main Content */
 .content {
