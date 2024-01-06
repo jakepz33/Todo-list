@@ -1,0 +1,41 @@
+:root {
+  --main-green: #10894e;
+  --main-grey: #efefef;
+  --blue: #5271ff;
+}
+
+body {
+  background-color: red;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.main-content {
+  background-color: aliceblue;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(250px, 300px) 1fr;
+}
+
+/* NavBar */
+.navbar {
+  background-color: var(--main-green);
+  border: 2px solid black;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* min-width: 150px; */
+}
+
+.brand {
+  height: 104px;
+  background-color: #ffffff;
+}
+.nav-items {
+  flex: 1;
+  background-color: var(--main-green);
+}
+/* Main Content */
+.content {
+  background-color: var(--main-grey);
+}
