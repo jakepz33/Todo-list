@@ -6,7 +6,9 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="main-content">
+    <!-- Main content -->
+    <div class="main-content main-small-device">
+      <!-- Left Column -->
       <div class="navbar">
         <div class="brand">
           <img src="../src/media/noun-check.svg" />
@@ -14,12 +16,41 @@
         </div>
         <div class="nav-items">
           <div class="nav-item-categories">
-            <div class="nav-tabs">One</div>
-            <div class="projects">Projects</div>
+            <div class="nav-tabs">
+              <button class="button button1">All</button>
+              <button class="button button2">Today</button>
+              <button class="button button3">Week</button>
+              <button class="button button4">Important</button>
+              <button class="button button5">Completed</button>
+            </div>
+            <div class="projects project-dropdown">
+              <button class="dropbtn">Projects</button>
+              <div class="dropdown-content">
+                <a href="#">New Project 1</a>
+                <a href="#">New Project 2</a>
+                <a href="#">Add New +</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="content">Main-content</div>
+      <!-- Right Column -->
+      <div class="content">
+        <div class="content-title"><p>TODAY</p></div>
+        <div class="content-add-task">
+          <button class="add-task-btn">+ Task</button>
+        </div>
+        <div class="content-tasks">
+          <div class="list-content">
+            <h2>Tasks</h2>
+            <div class="add-list">
+              <div>Task 1</div>
+              <div>Task 1</div>
+              <div>Task 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
