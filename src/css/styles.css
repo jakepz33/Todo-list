@@ -186,6 +186,27 @@ body {
   display: flex;
   flex-direction: column;
 }
-.add-list div {
+.list-item {
   padding: 20px 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.list-item > div:nth-child(2) {
+  text-align: center;
+}
+.checkmark {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+}
+.list-item-first {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.list-item-first > p {
+  margin: 0;
+  font-size: 18px;
 }

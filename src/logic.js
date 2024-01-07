@@ -6,6 +6,25 @@ const loadModule = function () {
   let title = getElements();
   const addButton = title.getAddTaskBtn();
 
+  //creating task objects
+  function newTask(date, details, important = false) {
+    const dueDate = date;
+    const taskDet = details;
+    const isImportant = important;
+    const isCompleted = false;
+
+    // return am object with the propertieds
+    return {
+      dueDate,
+      taskDet,
+      isImportant,
+      isCompleted,
+    };
+  }
+
+  const task1 = newTask("10/20/1999", "I am running");
+  console.log("This is the due date", task1.dueDate);
+
   console.log(addButton);
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
