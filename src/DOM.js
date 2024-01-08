@@ -16,10 +16,28 @@ const getElements = function () {
     return addBtn;
   };
 
+  const getForm = () => {
+    const formList = document.querySelector("#listForm");
+    return formList;
+  };
+
+  const getCancelBtn = () => {
+    const cancelBtn = document.querySelector(".listCancelBtn");
+    return cancelBtn;
+  };
+
+  const getSubmitBtn = () => {
+    const submitBtn = document.querySelector(".listSubmitBtn");
+    return submitBtn;
+  };
+
   return {
     getTitle,
     getTaskList,
     getAddTaskBtn,
+    getForm,
+    getCancelBtn,
+    getSubmitBtn,
   };
 };
 

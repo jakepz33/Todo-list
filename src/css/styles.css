@@ -210,3 +210,31 @@ body {
   margin: 0;
   font-size: 18px;
 }
+/* TASK FORM POP-UP NEEDS STYLING */
+.item-form {
+  display: none;
+}
+.show-form {
+  display: block;
+}
+#listForm {
+  border: 2px solid black;
+  padding: 15px;
+}
+.inputField {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.inputField input {
+  margin-bottom: 5px;
+}
+.formButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+#formBtn {
+  margin-bottom: 0;
+}
