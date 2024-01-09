@@ -238,3 +238,7 @@ body {
 #formBtn {
   margin-bottom: 0;
 }
+
+.tabActive {
+  border-bottom: 2px solid white;
+}

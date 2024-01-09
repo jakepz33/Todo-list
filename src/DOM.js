@@ -30,6 +30,10 @@ const getElements = function () {
     const submitBtn = document.querySelector(".listSubmitBtn");
     return submitBtn;
   };
+  const getAllTab = () => {
+    const allTab = document.querySelector(".button1");
+    return allTab;
+  };
 
   return {
     getTitle,
@@ -38,6 +42,7 @@ const getElements = function () {
     getForm,
     getCancelBtn,
     getSubmitBtn,
+    getAllTab,
   };
 };
 
@@ -45,7 +50,7 @@ const getElements = function () {
 function changeTitle(title) {
   const titleElement = document.querySelector(".title");
   titleElement.textContent = title;
-  console.log("coming from function");
+  // console.log("coming from function");
 }
 
 export { getElements, changeTitle };

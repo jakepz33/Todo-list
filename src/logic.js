@@ -1,13 +1,15 @@
 import { getElements, changeTitle } from "./DOM";
+// import { allTab } from "./tabs";
 
 const loadModule = function () {
   const buttons = document.querySelectorAll(".button");
-  console.log(buttons);
+  // console.log(buttons);
   let title = getElements();
   const addButton = title.getAddTaskBtn();
   const cancelButton = title.getCancelBtn();
   const submitButton = title.getSubmitBtn();
   const listForm = title.getForm();
+  const allTab = title.getAllTab();
 
   //creating task objects & return object properties
   function newTask(id, title, details, date, important = false) {
@@ -36,21 +38,23 @@ const loadModule = function () {
     return tasks;
   }
 
-  console.log(addButton);
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      buttons.forEach((otherButton) => {
+        otherButton.classList.remove("tabActive");
+      });
       //   title.getTitle(button.textContent); -- this works as well
       changeTitle(button.textContent.toUpperCase());
-      console.log("ADD BUTTON", button.textContent);
-      console.log(title.getTaskList());
+      button.classList.add("tabActive");
+      // console.log(title.getTaskList());
     });
   });
 
   // function for adding div
-  function addTaskContent() {
+  function addTaskContent(task) {
     // get updated Array
-    const updatedArray = getTasks();
-    const newItem = updatedArray[updatedArray.length - 1];
+    // const updatedArray = getTasks();
+    // const newItem = updatedArray[updatedArray.length - 1];
 
     const taskList = document.querySelector(".add-list");
     const listDiv = document.createElement("div");
@@ -64,8 +68,8 @@ const loadModule = function () {
     contentDiv.classList.add("list-item-first");
     checkmark.classList.add("checkmark");
 
-    taskTitle.textContent = newItem.taskTitle;
-    editIconContainer.textContent = newItem.dueDate;
+    taskTitle.textContent = task.taskTitle;
+    editIconContainer.textContent = task.dueDate;
 
     listDiv.append(contentDiv, editIconContainer);
     contentDiv.append(checkmark, taskTitle);
@@ -94,7 +98,7 @@ const loadModule = function () {
     listForm.reset();
     listForm.classList.toggle("show-form");
     console.log(tasks);
-    addTaskContent();
+    addTaskContent(addTask);
   });
 
   // Cancel submission and clear fields
@@ -104,8 +108,18 @@ const loadModule = function () {
     listForm.reset();
   });
 
+  // List all tasks
+  // allTab.addEventListener("click", () => {
+  // allTab();
+  // console.log("All tab called.");
+  //   const { allTab } = require("./tabs");
+
+  //   allTab();
+  // });
+
   return {
     getTasks,
+    addTaskContent,
   };
 };
 
