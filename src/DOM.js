@@ -34,6 +34,10 @@ const getElements = function () {
     const allTab = document.querySelector(".button1");
     return allTab;
   };
+  const getTodayTab = () => {
+    const todayTab = document.querySelector(".button2");
+    return todayTab;
+  };
 
   return {
     getTitle,
@@ -43,6 +47,7 @@ const getElements = function () {
     getCancelBtn,
     getSubmitBtn,
     getAllTab,
+    getTodayTab,
   };
 };
 

@@ -10,6 +10,7 @@ const loadModule = function () {
   const submitButton = title.getSubmitBtn();
   const listForm = title.getForm();
   const allTab = title.getAllTab();
+  const taskList = title.getTaskList();
 
   //creating task objects & return object properties
   function newTask(id, title, details, date, important = false) {
@@ -79,6 +80,8 @@ const loadModule = function () {
 
   // Display New Task Form
   addButton.addEventListener("click", () => {
+    // append to account for div clearance
+    taskList.append(listForm);
     // Toggle the 'show-form' class on the form element
     listForm.classList.toggle("show-form");
     console.log("RUNNNING");
