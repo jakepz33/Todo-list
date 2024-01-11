@@ -57,7 +57,7 @@ body {
   min-height: 450px;
   height: 75%;
   width: 85%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
 }
@@ -97,7 +97,7 @@ body {
   color: white;
 }
 .projects {
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
   /* background-color: pink; */
   background-color: transparent;
   flex: 1;
@@ -109,9 +109,11 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent;
+  /* background-color: red; */
+  border: 2px solid black;
   color: white;
-  width: 90%;
+  width: 223px;
+  border-radius: 0 0 15px 15px;
   z-index: 1;
 }
 .dropdown-content a {
@@ -121,13 +123,15 @@ body {
   display: block;
 }
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #d88787;
+  /* background-color: transparent; */
 }
 .project-dropdown:hover .dropdown-content {
-  display: block;
+  display: block; /* change this to .project-dropdown "click"*/
 }
 .project-dropdown:hover .dropbtn {
-  background-color: pink;
+  background-color: rgb(32, 29, 30);
+  border-radius: 15px 15px 0 0;
 }
 .project-dropdown a {
   text-align: center;
@@ -209,6 +213,9 @@ body {
 .list-item-first > p {
   margin: 0;
   font-size: 18px;
+}
+.yessir {
+  display: flex;
 }
 /* TASK FORM POP-UP NEEDS STYLING */
 .item-form {

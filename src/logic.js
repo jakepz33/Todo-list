@@ -64,17 +64,24 @@ const loadModule = function () {
     const taskTitle = document.createElement("p");
     const editIconContainer = document.createElement("div");
     const form = document.getElementById("listForm");
+    const datePara = document.createElement("p");
+    const importantIcon = document.createElement("span");
 
     listDiv.classList.add("list-item");
     contentDiv.classList.add("list-item-first");
     checkmark.classList.add("checkmark");
+    editIconContainer.classList.add("yessir");
+    importantIcon.classList.add("material-symbols-outlined");
 
     taskTitle.textContent = task.taskTitle;
-    editIconContainer.textContent = task.dueDate;
+    datePara.textContent = task.dueDate;
 
+    // editIconContainer.textContent = task.dueDate;
+    editIconContainer.append(datePara, importantIcon);
     listDiv.append(contentDiv, editIconContainer);
     contentDiv.append(checkmark, taskTitle);
-    taskList.insertBefore(listDiv, form);
+    // taskList.insertBefore(listDiv, form);
+    taskList.append(listDiv);
     console.log("Done");
   }
 
@@ -96,6 +103,7 @@ const loadModule = function () {
     let details = document.getElementById("listInputDetail").value;
     let date = document.getElementById("listInputDate").value;
 
+    console.log("This is the date", date);
     const addTask = newTask(taskID, title, details, date);
     tasks.push(addTask);
     listForm.reset();
@@ -111,14 +119,11 @@ const loadModule = function () {
     listForm.reset();
   });
 
-  // List all tasks
-  // allTab.addEventListener("click", () => {
-  // allTab();
-  // console.log("All tab called.");
-  //   const { allTab } = require("./tabs");
-
-  //   allTab();
-  // });
+  //DUMMY DATA
+  tasks.push(newTask(1, "Clean Room", "runnning", "2024-01-10"));
+  tasks.push(newTask(2, "Buy Groceries", "Costco", "2024-01-11"));
+  tasks.push(newTask(3, "Paint room", "start with wall", "2024-01-11"));
+  tasks.push(newTask(2, "Oil Change", "at pep boys", "2024-01-15"));
 
   return {
     getTasks,
