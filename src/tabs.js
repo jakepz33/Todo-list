@@ -14,41 +14,29 @@ console.log("I AM THE TABS PAGE");
 allTab.addEventListener("click", () => {
   displayAll();
 });
+
+// SHOW ALL TAB ON LOAD
 document.addEventListener("DOMContentLoaded", () => {
   allTab.classList.add("tabActive");
   changeTitle(allTab.textContent.toUpperCase());
   displayAll();
 });
 
-/*addTab.addEventListener("click", () => {
-  const taskBoard = domInstance.getTaskList();
-
-  // Clear the existing content in the taskBoard
-  taskBoard.innerHTML = "";
-
-  //Get each task from array and add them to the taskBoard
-  //   addTab.classList.add("tabActive");
-  const listArrays = moduleInstance.getTasks();
-  console.log("PLEASE WORK");
-  console.log(listArrays);
-  listArrays.forEach((item) => {
-    console.log("This is the item", item);
-    moduleInstance.addTaskContent(item);
-  });
-}); */
-
+// SHOW ALL TASKS -----
 function displayAll() {
   const taskBoard = domInstance.getTaskList();
 
   taskBoard.innerHTML = "";
 
   const listArrays = moduleInstance.getTasks();
-  console.log("DISPLAY ALL");
-  listArrays.forEach((item) => {
-    moduleInstance.addTaskContent(item);
+  console.log("DISPLAY ALL", listArrays);
+  listArrays.forEach((item, index) => {
+    moduleInstance.addTaskContent(item, index);
+    console.log(index);
   });
 }
-// // Only get items that are todays date
+
+// SHOW TODAY TASKS Only get items that are todays date
 todayTab.addEventListener("click", () => {
   const taskBoard = domInstance.getTaskList();
 
@@ -79,6 +67,7 @@ todayTab.addEventListener("click", () => {
   console.log("todayTab");
 });
 
+// SHOW TASKS FOR THE WEEK
 weekTab.addEventListener("click", () => {
   const taskBoard = domInstance.getTaskList();
 
@@ -97,3 +86,8 @@ weekTab.addEventListener("click", () => {
   });
   console.log("next7DaysTab");
 });
+
+// CHANGE ITEM PROPERTIES
+
+const my_array = moduleInstance.getTasks();
+console.log("MY ARRAY", my_array);

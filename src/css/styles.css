@@ -136,7 +136,8 @@ body {
 .project-dropdown a {
   text-align: center;
 }
-/* Main Content */
+
+/* MAIN CONTENT */
 .content {
   background-color: var(--main-grey);
   padding: 60px 80px 0 80px;
@@ -194,6 +195,7 @@ body {
   padding: 20px 20px;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  border-bottom: 1px solid var(--main-grey);
 }
 .list-item > div:nth-child(2) {
   text-align: center;
@@ -203,12 +205,13 @@ body {
   width: 14px;
   border-radius: 50%;
   border: 2px solid var(--blue);
+  cursor: pointer;
 }
 .list-item-first {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 .list-item-first > p {
   margin: 0;
@@ -216,6 +219,27 @@ body {
 }
 .yessir {
   display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.yessir > p {
+  font-size: 18px;
+  color: var(--blue);
+}
+.material-symbols-outlined.empty-star {
+  font-size: 24px;
+  color: rgb(184, 184, 175);
+  cursor: pointer;
+}
+.material-icons.marked {
+  color: rgb(0, 228, 228);
+  font-size: 24px;
+  cursor: pointer;
+}
+.completed {
+  background-color: red;
+  border: 2px solid red;
 }
 /* TASK FORM POP-UP NEEDS STYLING */
 .item-form {

@@ -39,6 +39,7 @@ const loadModule = function () {
     return tasks;
   }
 
+  // CHANGE TITLE AND TAB
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       buttons.forEach((otherButton) => {
@@ -51,11 +52,13 @@ const loadModule = function () {
     });
   });
 
-  // function for adding div
-  function addTaskContent(task) {
+  // ADDING TASK FROM FORM
+  function addTaskContent(task, index = null) {
     // get updated Array
     // const updatedArray = getTasks();
     // const newItem = updatedArray[updatedArray.length - 1];
+    const newTask = task.taskTitle;
+    const lastIndex = index;
 
     const taskList = document.querySelector(".add-list");
     const listDiv = document.createElement("div");
@@ -66,23 +69,57 @@ const loadModule = function () {
     const form = document.getElementById("listForm");
     const datePara = document.createElement("p");
     const importantIcon = document.createElement("span");
+    const deleteBtn = document.createElement("span");
 
     listDiv.classList.add("list-item");
+    listDiv.setAttribute("data-index", index);
     contentDiv.classList.add("list-item-first");
     checkmark.classList.add("checkmark");
     editIconContainer.classList.add("yessir");
     importantIcon.classList.add("material-symbols-outlined");
+    importantIcon.classList.add("empty-star");
+    importantIcon.textContent = "star";
+    deleteBtn.classList.add("material-symbols-outlined");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "delete";
 
     taskTitle.textContent = task.taskTitle;
     datePara.textContent = task.dueDate;
 
     // editIconContainer.textContent = task.dueDate;
-    editIconContainer.append(datePara, importantIcon);
+    editIconContainer.append(datePara, importantIcon, deleteBtn);
     listDiv.append(contentDiv, editIconContainer);
     contentDiv.append(checkmark, taskTitle);
     // taskList.insertBefore(listDiv, form);
     taskList.append(listDiv);
-    console.log("Done");
+    console.log("Ran addTaskContent function");
+    console.log(`This is the newly added stuff ${newTask}, ${index}`);
+
+    //give button functionality
+    importantIcon.addEventListener("click", () => {
+      importantIcon.classList.toggle("material-icons");
+      importantIcon.classList.toggle("marked");
+
+      if (importantIcon.classList.contains("marked")) {
+        tasks[index].isImportant = true;
+        console.log("is Important");
+      } else {
+        tasks[index].isImportant = false;
+        console.log("Is not important");
+      }
+    });
+
+    checkmark.addEventListener("click", () => {
+      checkmark.classList.toggle("completed");
+
+      if (checkmark.classList.contains("completed")) {
+        tasks[index].isCompleted = true;
+      } else {
+        tasks[index].isCompleted = false;
+      }
+      console.log(tasks);
+    });
+    /// NEED TO ADD DELETE BUTTON BRAH
   }
 
   // Display New Task Form
@@ -109,7 +146,10 @@ const loadModule = function () {
     listForm.reset();
     listForm.classList.toggle("show-form");
     console.log(tasks);
-    addTaskContent(addTask);
+
+    // get the index for newly pushed item
+    let lastIndex = tasks.length - 1;
+    addTaskContent(addTask, lastIndex);
   });
 
   // Cancel submission and clear fields
