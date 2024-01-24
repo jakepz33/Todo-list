@@ -233,9 +233,18 @@ body {
   cursor: pointer;
 }
 .material-icons.marked {
-  color: rgb(0, 228, 228);
+  color: rgb(0, 228, 179);
   font-size: 24px;
   cursor: pointer;
+}
+.material-icons::before {
+  content: "\e3bc";
+  font-family: "Material Icons Outlined";
+  font-size: 24px;
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .completed {
   background-color: red;

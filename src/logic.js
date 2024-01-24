@@ -1,4 +1,5 @@
 import { getElements, changeTitle } from "./DOM";
+import { displayAll } from "./tabs";
 // import { allTab } from "./tabs";
 
 const loadModule = function () {
@@ -52,6 +53,10 @@ const loadModule = function () {
     });
   });
 
+  function callDisplay(func) {
+    func();
+  }
+
   // ADDING TASK FROM FORM
   function addTaskContent(task, index = null) {
     // get updated Array
@@ -93,8 +98,13 @@ const loadModule = function () {
     // taskList.insertBefore(listDiv, form);
     taskList.append(listDiv);
     console.log("Ran addTaskContent function");
-    console.log(`This is the newly added stuff ${newTask}, ${index}`);
+    console.log(
+      `addTaskContent This is the newly added stuff ${newTask}, ${index}`
+    );
 
+    // if isImportant True
+    if (task.isImportant === true) {
+    }
     //give button functionality
     importantIcon.addEventListener("click", () => {
       importantIcon.classList.toggle("material-icons");
@@ -119,7 +129,14 @@ const loadModule = function () {
       }
       console.log(tasks);
     });
-    /// NEED TO ADD DELETE BUTTON BRAH
+
+    /// DELETE BUTTON
+    deleteBtn.addEventListener("click", () => {
+      console.log("Calling Delete Button");
+      tasks.splice(index, 1);
+      console.log(tasks);
+      displayAll();
+    });
   }
 
   // Display New Task Form

@@ -6,6 +6,7 @@ const domInstance = getElements();
 const allTab = domInstance.getAllTab();
 const todayTab = domInstance.getTodayTab();
 const weekTab = domInstance.getWeekTab();
+const importantTab = domInstance.getImportantTab();
 
 console.log(weekTab);
 console.log("I AM THE TABS PAGE");
@@ -89,5 +90,22 @@ weekTab.addEventListener("click", () => {
 
 // CHANGE ITEM PROPERTIES
 
+// SHOW ITEMS THAT ARE IMPORTANT
+console.log("Important Tab", importantTab);
+importantTab.addEventListener("click", () => {
+  const taskBoard = domInstance.getTaskList();
+  taskBoard.innerHTML = "";
+
+  const listArrays = moduleInstance.getTasks();
+  console.log("Important clicked");
+  listArrays.forEach((item, index) => {
+    if (item.isImportant === true) {
+      moduleInstance.addTaskContent(item, index);
+    }
+  });
+});
+
 const my_array = moduleInstance.getTasks();
 console.log("MY ARRAY", my_array);
+
+export { displayAll };
