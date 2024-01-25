@@ -51,6 +51,16 @@ const getElements = function () {
     return completedTab;
   };
 
+  // grab the projects dropdown items
+  const getProjectDropdownContent = () => {
+    const dropdownContent = document.querySelector(".dropdown-content");
+    return dropdownContent;
+  };
+  const getProjectAddBtn = () => {
+    const projectAddBtn = document.querySelector(".addProject");
+    return projectAddBtn;
+  };
+
   return {
     getTitle,
     getTaskList,
@@ -63,6 +73,8 @@ const getElements = function () {
     getWeekTab,
     getImportantTab,
     getCompletedTab,
+    getProjectDropdownContent,
+    getProjectAddBtn,
   };
 };
 

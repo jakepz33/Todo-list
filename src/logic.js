@@ -12,6 +12,7 @@ const loadModule = function () {
   const listForm = title.getForm();
   const allTab = title.getAllTab();
   const taskList = title.getTaskList();
+  const dropdownContent = title.getProjectDropdownContent();
 
   //creating task objects & return object properties
   function newTask(id, title, details, date, important = false) {
@@ -182,6 +183,10 @@ const loadModule = function () {
     listForm.reset();
   });
 
+  // FUNCTION FOR CREATING A NEW PROJECT
+  function newProject() {
+    console.log(dropdownContent);
+  }
   //DUMMY DATA
   tasks.push(newTask(1, "Clean Room", "runnning", "2024-01-10"));
   tasks.push(newTask(2, "Buy Groceries", "Costco", "2024-01-11"));
@@ -191,6 +196,7 @@ const loadModule = function () {
   return {
     getTasks,
     addTaskContent,
+    newProject,
   };
 };
 

@@ -8,6 +8,7 @@ const todayTab = domInstance.getTodayTab();
 const weekTab = domInstance.getWeekTab();
 const importantTab = domInstance.getImportantTab();
 const completedTab = domInstance.getCompletedTab();
+const addProjectBtn = domInstance.getProjectAddBtn();
 
 console.log(weekTab);
 console.log("I AM THE TABS PAGE");
@@ -108,7 +109,24 @@ importantTab.addEventListener("click", () => {
 
 // SHOW ITEMS THAT ARE COMPLETED
 completedTab.addEventListener("click", () => {
+  const taskBoard = domInstance.getTaskList();
+  taskBoard.innerHTML = "";
+
+  const listArrays = moduleInstance.getTasks();
   console.log("Clicked on completed Tab");
+  listArrays.forEach((item, index) => {
+    if (item.isCompleted === true) {
+      console.log(item.taskTitle);
+      moduleInstance.addTaskContent(item, index);
+    }
+  });
+});
+
+// ADD PROJECT BTN
+addProjectBtn.addEventListener("click", () => {
+  console.log("AddProjectBtn");
+  moduleInstance.newProject();
+  // addBTN function()
 });
 const my_array = moduleInstance.getTasks();
 console.log("MY ARRAY", my_array);
