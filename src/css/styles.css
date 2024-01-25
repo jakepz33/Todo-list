@@ -250,6 +250,9 @@ body {
   background-color: red;
   border: 2px solid red;
 }
+.delete-btn {
+  cursor: pointer;
+}
 /* TASK FORM POP-UP NEEDS STYLING */
 .item-form {
   display: none;

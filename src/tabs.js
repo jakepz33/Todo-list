@@ -7,6 +7,7 @@ const allTab = domInstance.getAllTab();
 const todayTab = domInstance.getTodayTab();
 const weekTab = domInstance.getWeekTab();
 const importantTab = domInstance.getImportantTab();
+const completedTab = domInstance.getCompletedTab();
 
 console.log(weekTab);
 console.log("I AM THE TABS PAGE");
@@ -105,6 +106,10 @@ importantTab.addEventListener("click", () => {
   });
 });
 
+// SHOW ITEMS THAT ARE COMPLETED
+completedTab.addEventListener("click", () => {
+  console.log("Clicked on completed Tab");
+});
 const my_array = moduleInstance.getTasks();
 console.log("MY ARRAY", my_array);
 

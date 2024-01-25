@@ -46,6 +46,10 @@ const getElements = function () {
     const importantTab = document.querySelector(".button4");
     return importantTab;
   };
+  const getCompletedTab = () => {
+    const completedTab = document.querySelector(".button5");
+    return completedTab;
+  };
 
   return {
     getTitle,
@@ -58,6 +62,7 @@ const getElements = function () {
     getTodayTab,
     getWeekTab,
     getImportantTab,
+    getCompletedTab,
   };
 };
 

@@ -104,6 +104,12 @@ const loadModule = function () {
 
     // if isImportant True
     if (task.isImportant === true) {
+      importantIcon.classList.add("material-icons");
+      importantIcon.classList.add("marked");
+      console.log(task.taskTitle);
+    }
+    if (task.isCompleted === true) {
+      checkmark.classList.add("completed");
     }
     //give button functionality
     importantIcon.addEventListener("click", () => {
