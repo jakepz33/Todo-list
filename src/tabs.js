@@ -132,6 +132,7 @@ addProjectBtn.addEventListener("click", () => {
 });
 
 // GET PROJECT CONTAINER AND RUN THE FUNCTION
+
 // BASED ON EVENT
 const my_array = moduleInstance.getTasks();
 console.log("MY ARRAY", my_array);

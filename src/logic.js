@@ -51,12 +51,13 @@ const loadModule = function () {
     return tasks;
   }
   const updateButtons = () => document.querySelectorAll(".button");
-  let newButtons = updateButtons();
+
   // CHANGE TITLE AND TAB
   function updateButtonEventListeners() {
+    let newButtons = updateButtons();
     newButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        buttons.forEach((otherButton) => {
+        newButtons.forEach((otherButton) => {
           otherButton.classList.remove("tabActive");
         });
         //   title.getTitle(button.textContent); -- this works as well
@@ -237,8 +238,6 @@ const loadModule = function () {
       newProjectLink,
       document.querySelector(".addProject")
     );
-
-    newButtons = updateButtons();
 
     updateButtonEventListeners();
   }
