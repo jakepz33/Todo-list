@@ -108,6 +108,7 @@ importantTab.addEventListener("click", () => {
 });
 
 // SHOW ITEMS THAT ARE COMPLETED
+console.log("Completed tab");
 completedTab.addEventListener("click", () => {
   const taskBoard = domInstance.getTaskList();
   taskBoard.innerHTML = "";
@@ -123,11 +124,13 @@ completedTab.addEventListener("click", () => {
 });
 
 // ADD PROJECT BTN
+console.log("Add project tab");
 addProjectBtn.addEventListener("click", () => {
   console.log("AddProjectBtn");
   moduleInstance.newProject();
   // addBTN function()
 });
+
 const my_array = moduleInstance.getTasks();
 console.log("MY ARRAY", my_array);
 

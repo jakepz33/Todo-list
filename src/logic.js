@@ -4,6 +4,7 @@ import { displayAll } from "./tabs";
 
 const loadModule = function () {
   const buttons = document.querySelectorAll(".button");
+
   // console.log(buttons);
   let title = getElements();
   const addButton = title.getAddTaskBtn();
@@ -15,13 +16,21 @@ const loadModule = function () {
   const dropdownContent = title.getProjectDropdownContent();
 
   //creating task objects & return object properties
-  function newTask(id, title, details, date, important = false) {
+  function newTask(
+    id,
+    title,
+    details,
+    date,
+    important = false,
+    project = null
+  ) {
     const taskID = id;
     const taskTitle = title;
     const taskDetails = details;
     const dueDate = date;
     const isImportant = important;
     const isCompleted = false;
+    const projectName = project;
 
     return {
       taskID,
@@ -30,6 +39,7 @@ const loadModule = function () {
       dueDate,
       isImportant,
       isCompleted,
+      projectName,
     };
   }
   // keep track of ID and store tasks in array
@@ -40,9 +50,10 @@ const loadModule = function () {
   function getTasks() {
     return tasks;
   }
-
+  const updateButtons = () => document.querySelectorAll(".button");
+  let newButtons = updateButtons();
   // CHANGE TITLE AND TAB
-  buttons.forEach((button) => {
+  newButtons.forEach((button) => {
     button.addEventListener("click", () => {
       buttons.forEach((otherButton) => {
         otherButton.classList.remove("tabActive");
@@ -53,6 +64,8 @@ const loadModule = function () {
       // console.log(title.getTaskList());
     });
   });
+
+  // CHANGE TITLE AND TAB FOR PROJECTS
 
   function callDisplay(func) {
     func();
@@ -186,7 +199,48 @@ const loadModule = function () {
   // FUNCTION FOR CREATING A NEW PROJECT
   function newProject() {
     console.log(dropdownContent);
+    const dropdownContainer = dropdownContent;
+    const lastChild = document.querySelector(".addProject");
+    const newProjectDiv = document.createElement("a");
+    const newInput = document.createElement("input");
+
+    newInput.setAttribute("type", "text");
+    newInput.setAttribute("id", "projectTitle");
+    newInput.setAttribute("placeholder", "New Project");
+
+    newInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const projectTitle = newInput.value;
+        if (projectTitle.trim() !== "") {
+          addNewProject(projectTitle);
+          dropdownContainer.removeChild(newProjectDiv);
+        }
+      }
+    });
+
+    newProjectDiv.appendChild(newInput);
+    dropdownContainer.insertBefore(newProjectDiv, lastChild);
+    console.log("Running newProject() function");
   }
+
+  function addNewProject(projectTitle) {
+    const dropdownContainer = dropdownContent;
+    const newProjectLink = document.createElement("a");
+    newProjectLink.setAttribute("class", "button");
+    newProjectLink.setAttribute("href", "#");
+    newProjectLink.textContent = projectTitle;
+
+    dropdownContainer.insertBefore(
+      newProjectLink,
+      document.querySelector(".addProject")
+    );
+
+    newButtons = updateButtons();
+
+    updateButtonEventListeners();
+  }
+
   //DUMMY DATA
   tasks.push(newTask(1, "Clean Room", "runnning", "2024-01-10"));
   tasks.push(newTask(2, "Buy Groceries", "Costco", "2024-01-11"));
