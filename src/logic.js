@@ -53,18 +53,20 @@ const loadModule = function () {
   const updateButtons = () => document.querySelectorAll(".button");
   let newButtons = updateButtons();
   // CHANGE TITLE AND TAB
-  newButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      buttons.forEach((otherButton) => {
-        otherButton.classList.remove("tabActive");
+  function updateButtonEventListeners() {
+    newButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((otherButton) => {
+          otherButton.classList.remove("tabActive");
+        });
+        //   title.getTitle(button.textContent); -- this works as well
+        changeTitle(button.textContent.toUpperCase());
+        button.classList.add("tabActive");
+        // console.log(title.getTaskList());
       });
-      //   title.getTitle(button.textContent); -- this works as well
-      changeTitle(button.textContent.toUpperCase());
-      button.classList.add("tabActive");
-      // console.log(title.getTaskList());
     });
-  });
-
+  }
+  updateButtonEventListeners();
   // CHANGE TITLE AND TAB FOR PROJECTS
 
   function callDisplay(func) {
