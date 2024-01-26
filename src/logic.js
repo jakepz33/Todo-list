@@ -203,21 +203,24 @@ const loadModule = function () {
   // function to add selection "project option" to listForm
   function addSelectiontoListForm() {
     const projects = getProjectOptions();
-    const selectElement = document.querySelector("#projectDropdown");
+    const selectElement = document.querySelector(".projectList");
+    console.log("SELECT ELEMENT", selectElement);
     projects.forEach((project) => {
       const option = document.createElement("option");
       option.classList.add("option");
       option.textContent = project;
 
-      selectElement.append(option);
+      console.log(selectElement);
+      // selectElement.appendChild(option);
     });
   }
 
   // Display New Task Form
   addButton.addEventListener("click", () => {
     // append to account for div clearance
-    addSelectiontoListForm();
     taskList.append(listForm);
+    addSelectiontoListForm();
+    console.log("LIST FORM", listForm);
     // Toggle the 'show-form' class on the form element
     listForm.classList.toggle("show-form");
     console.log("RUNNNING");
@@ -251,7 +254,8 @@ const loadModule = function () {
   // Cancel submission and clear fields
   cancelButton.addEventListener("click", () => {
     const selectElement = document.querySelector("#projectDropdown");
-    selectElement.innerHTML = "";
+    selectElement.innerHTML = ""; // need tp fix this
+    console.log("CANCEL BUTTON SELECT ELEMENT", selectElement);
     listForm.classList.toggle("show-form");
     console.log(".show-form class removed");
     listForm.reset();
