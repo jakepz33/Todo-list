@@ -9,6 +9,7 @@ const weekTab = domInstance.getWeekTab();
 const importantTab = domInstance.getImportantTab();
 const completedTab = domInstance.getCompletedTab();
 const addProjectBtn = domInstance.getProjectAddBtn();
+const dropdownContent = domInstance.getProjectDropdownContent();
 
 console.log(weekTab);
 console.log("I AM THE TABS PAGE");
@@ -132,6 +133,11 @@ addProjectBtn.addEventListener("click", () => {
 });
 
 // GET PROJECT CONTAINER AND RUN THE FUNCTION
+dropdownContent.addEventListener("click", (event) => {
+  const projectName = event.target.textContent;
+  console.log(projectName);
+  // Now edit HTML to take project Name
+});
 
 // BASED ON EVENT
 const my_array = moduleInstance.getTasks();

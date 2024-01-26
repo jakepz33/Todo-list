@@ -21,8 +21,8 @@ const loadModule = function () {
     title,
     details,
     date,
-    important = false,
-    project = null
+    project = null,
+    important = false
   ) {
     const taskID = id;
     const taskTitle = title;
@@ -42,13 +42,18 @@ const loadModule = function () {
       projectName,
     };
   }
+
   // keep track of ID and store tasks in array
   let taskID = 0;
   const tasks = [];
+  const projectOptions = ["Chores", "Coding"];
 
   // Get updated Task Array
   function getTasks() {
     return tasks;
+  }
+  function getProjectOptions() {
+    return projectOptions;
   }
   const updateButtons = () => document.querySelectorAll(".button");
 
@@ -161,10 +166,23 @@ const loadModule = function () {
       displayAll();
     });
   }
+  // function to add selection "project option" to listForm
+  function addSelectiontoListForm() {
+    const projects = getProjectOptions();
+    const selectElement = document.querySelector("#projectDropdown");
+    projects.forEach((project) => {
+      const option = document.createElement("option");
+      option.classList.add(project);
+      option.textContent = project;
+
+      selectElement.append(option);
+    });
+  }
 
   // Display New Task Form
   addButton.addEventListener("click", () => {
     // append to account for div clearance
+    addSelectiontoListForm();
     taskList.append(listForm);
     // Toggle the 'show-form' class on the form element
     listForm.classList.toggle("show-form");
@@ -179,9 +197,13 @@ const loadModule = function () {
     let title = document.getElementById("listInput").value;
     let details = document.getElementById("listInputDetail").value;
     let date = document.getElementById("listInputDate").value;
+    let projectName = document.getElementById("projectDropdown").value;
+    const selectElement = document.querySelector("#projectDropdown");
+    selectElement.innerHTML = "";
 
     console.log("This is the date", date);
-    const addTask = newTask(taskID, title, details, date);
+    console.log("THIS IS THE PROJECT NAME", projectName);
+    const addTask = newTask(taskID, title, details, date, projectName);
     tasks.push(addTask);
     listForm.reset();
     listForm.classList.toggle("show-form");
@@ -194,6 +216,8 @@ const loadModule = function () {
 
   // Cancel submission and clear fields
   cancelButton.addEventListener("click", () => {
+    const selectElement = document.querySelector("#projectDropdown");
+    selectElement.innerHTML = "";
     listForm.classList.toggle("show-form");
     console.log(".show-form class removed");
     listForm.reset();
@@ -216,6 +240,9 @@ const loadModule = function () {
         event.preventDefault();
         const projectTitle = newInput.value;
         if (projectTitle.trim() !== "") {
+          // add project title to projectsArray
+          projectOptions.push(projectTitle);
+
           addNewProject(projectTitle);
           dropdownContainer.removeChild(newProjectDiv);
         }
@@ -240,13 +267,14 @@ const loadModule = function () {
     );
 
     updateButtonEventListeners();
+    console.log(projectOptions);
   }
 
   //DUMMY DATA
   tasks.push(newTask(1, "Clean Room", "runnning", "2024-01-10"));
   tasks.push(newTask(2, "Buy Groceries", "Costco", "2024-01-11"));
   tasks.push(newTask(3, "Paint room", "start with wall", "2024-01-11"));
-  tasks.push(newTask(2, "Oil Change", "at pep boys", "2024-01-15"));
+  tasks.push(newTask(4, "Oil Change", "at pep boys", "2024-01-15"));
 
   return {
     getTasks,

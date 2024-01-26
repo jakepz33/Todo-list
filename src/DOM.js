@@ -60,6 +60,9 @@ const getElements = function () {
     const projectAddBtn = document.querySelector(".addProject");
     return projectAddBtn;
   };
+  const getSelectProjectDropDown = () => {
+    const selectProjectDropDown = document.querySelector("#projectDropdown");
+  };
 
   return {
     getTitle,
@@ -75,6 +78,7 @@ const getElements = function () {
     getCompletedTab,
     getProjectDropdownContent,
     getProjectAddBtn,
+    getSelectProjectDropDown,
   };
 };
 
