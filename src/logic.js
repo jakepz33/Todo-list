@@ -96,6 +96,7 @@ const loadModule = function () {
     const form = document.getElementById("listForm");
     const datePara = document.createElement("p");
     const importantIcon = document.createElement("span");
+    const infoIcon = document.createElement("span");
     const deleteBtn = document.createElement("span");
 
     listDiv.classList.add("list-item");
@@ -109,12 +110,15 @@ const loadModule = function () {
     deleteBtn.classList.add("material-symbols-outlined");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "delete";
+    infoIcon.classList.add("material-symbols-outlined");
+    infoIcon.classList.add("info-btn");
+    infoIcon.textContent = "info";
 
     taskTitle.textContent = task.taskTitle;
     datePara.textContent = task.dueDate;
 
     // editIconContainer.textContent = task.dueDate;
-    editIconContainer.append(datePara, importantIcon, deleteBtn);
+    editIconContainer.append(datePara, importantIcon, infoIcon, deleteBtn);
     listDiv.append(contentDiv, editIconContainer);
     contentDiv.append(checkmark, taskTitle);
     // taskList.insertBefore(listDiv, form);
@@ -156,6 +160,36 @@ const loadModule = function () {
         tasks[index].isCompleted = false;
       }
       console.log(tasks);
+    });
+
+    const modal = document.getElementById("modal");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    // INFO BUTTON CALLS SHOWS DIALOG FOR THAT ITEM
+    infoIcon.addEventListener("click", () => {
+      // const modal = document.getElementById('modal')
+      // const infoIcon = document.getElementById('infoIcon');
+      // const closeBtn = document.getElementsByClassName('close')[0];
+      const titleP = document.querySelector(".titleP");
+      const descriptionP = document.querySelector(".descriptionP");
+      const projectP = document.querySelector(".projectP");
+      const dateP = document.querySelector(".dateP");
+
+      titleP.innerHTML = `<span class="material-symbols-outlined modalIcon">title</span>${task.taskTitle}`;
+
+      descriptionP.innerHTML = `<span class="material-symbols-outlined modalIcon">description</span
+      >${task.taskDetails}`;
+
+      projectP.innerHTML = `<span class="material-symbols-outlined modalIcon">tactic</span
+      >${task.projectName}`;
+
+      dateP.innerHTML = `<span class="material-symbols-outlined modalIcon">calendar_month</span>${task.dueDate}`;
+
+      modal.style.display = "block";
+      console.log("infoIcon EVENT LISTENER");
+    });
+
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
     });
 
     /// DELETE BUTTON

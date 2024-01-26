@@ -89,7 +89,7 @@ body {
   font-weight: 600;
   border: 2px solid black;
   padding: 16px;
-  width: 90%;
+  width: 100%;
   min-width: 200px;
   border-radius: 15px;
   cursor: pointer;
@@ -113,7 +113,7 @@ body {
   /* background-color: red; */
   border: 2px solid black;
   color: white;
-  width: 90%;
+  width: 98.2%;
   min-width: 196px;
   border-radius: 0 0 15px 15px;
   z-index: 1;
@@ -138,7 +138,9 @@ body {
 .project-dropdown a {
   text-align: center;
 }
-
+.addProject:hover {
+  border-radius: 0 0 15px 15px;
+}
 /* MAIN CONTENT */
 .content {
   background-color: var(--main-grey);
@@ -254,6 +256,11 @@ body {
 }
 .delete-btn {
   cursor: pointer;
+  color: rgb(211, 14, 14);
+}
+.info-btn {
+  cursor: pointer;
+  color: rgb(184, 184, 175);
 }
 /* TASK FORM POP-UP NEEDS STYLING */
 .item-form {
@@ -286,4 +293,57 @@ body {
 
 .tabActive {
   border-bottom: 2px solid white;
+}
+
+/* MODAL STYLING */
+.modal {
+  display: none; /* Hide the modal by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #3e4050;
+  color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+  height: 300px;
+  border-radius: 15px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.taskInfo {
+  display: flex;
+  flex-direction: column;
+}
+.taskInfo h2 {
+  text-align: center;
+  border-bottom: 2px solid #cec9c9;
+  padding-bottom: 16px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.modalIcon {
+  vertical-align: middle;
+  padding-right: 10px;
 }
