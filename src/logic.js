@@ -46,7 +46,7 @@ const loadModule = function () {
   // keep track of ID and store tasks in array
   let taskID = 0;
   const tasks = [];
-  const projectOptions = ["Chores", "Coding"];
+  const projectOptions = ["House chores", "Coding"];
 
   // Get updated Task Array
   function getTasks() {
@@ -172,7 +172,7 @@ const loadModule = function () {
     const selectElement = document.querySelector("#projectDropdown");
     projects.forEach((project) => {
       const option = document.createElement("option");
-      option.classList.add(project);
+      option.classList.add("option");
       option.textContent = project;
 
       selectElement.append(option);
@@ -271,10 +271,16 @@ const loadModule = function () {
   }
 
   //DUMMY DATA
-  tasks.push(newTask(1, "Clean Room", "runnning", "2024-01-10"));
-  tasks.push(newTask(2, "Buy Groceries", "Costco", "2024-01-11"));
-  tasks.push(newTask(3, "Paint room", "start with wall", "2024-01-11"));
-  tasks.push(newTask(4, "Oil Change", "at pep boys", "2024-01-15"));
+  tasks.push(
+    newTask(1, "Clean Room", "runnning", "2024-01-10", "House Chores")
+  );
+  tasks.push(
+    newTask(2, "Buy Groceries", "Costco", "2024-01-11", "House Chores")
+  );
+  tasks.push(
+    newTask(3, "Paint room", "start with wall", "2024-01-11", "Coding")
+  );
+  tasks.push(newTask(4, "Oil Change", "at pep boys", "2024-01-15", "Coding"));
 
   return {
     getTasks,

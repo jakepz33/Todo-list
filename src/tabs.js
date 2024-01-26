@@ -134,7 +134,17 @@ addProjectBtn.addEventListener("click", () => {
 
 // GET PROJECT CONTAINER AND RUN THE FUNCTION
 dropdownContent.addEventListener("click", (event) => {
+  const taskBoard = domInstance.getTaskList();
+  taskBoard.innerHTML = "";
   const projectName = event.target.textContent;
+  const listArrays = moduleInstance.getTasks();
+
+  listArrays.forEach((item, index) => {
+    if (item.projectName === projectName) {
+      console.log("its a match! ", item.taskTitle);
+      moduleInstance.addTaskContent(item, index);
+    }
+  });
   console.log(projectName);
   // Now edit HTML to take project Name
 });
